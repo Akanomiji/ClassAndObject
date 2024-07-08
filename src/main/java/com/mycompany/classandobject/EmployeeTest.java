@@ -15,19 +15,24 @@ public class EmployeeTest {
 //        System.out.println(emp.getId()+", "+emp.getName()+", "+emp.getSex()+", "+emp.getSalary());
           Employee[] emp = new Employee[5];
           emp[0] = new Employee("0001","Mon","F",20000);
+          for(int i = 0;i < emp.length;i++)
+        {
+            emp[i].print();
+        }       
+    
     }
     
     public static Employee InputData() {
         Scanner scan = new Scanner(System.in);
-        //Employee employee = new Employee();
-//        employee.id=scan.next();
-//        employee.name=scan.next();
-//        employee.sex=scan.next();
-//        employee.salary=scan.nextInt();
-//        employee.setId(scan.next());
-//        employee.setName(scan.next());
-//        employee.setSex(scan.next());
-//        employee.setSalary(scan.nextInt());
-//        return employee;
+        Employee employee = new Employee();
+        employee.setID(scan.next());
+        employee.setName(scan.next());
+        employee.setSex(scan.next());
+        employee.setSalary(scan.nextInt());
+        //employee.id = scan.next();
+        //employee.name = scan.next();
+        //employee.sex = scan.next();
+        //employee.salary = scan.nextInt();
+        return employee;
     }
 }

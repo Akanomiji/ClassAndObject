@@ -9,45 +9,65 @@ package com.mycompany.classandobject;
  * @author com4936
  */
 public class Employee {
-    private String id,name,sex;
-    
+    private String id, name;        // Encapsulation
+    private String sex;
     private int salary;
-
-    public Employee(String id,String name,String sex,int salary) {
-        this.id=id;
-        this.name=name;
-        this.sex=sex;
-        this.salary=salary;
-    }
-
     
+    public Employee()               // Construtor Method
+    {
     
-    public void setId(String id) {
-        this.id=id;
     }
-    public void setName(String name) {
-        this.name=name;
+    
+    public Employee(String id ,String name ,String sex , int salary)
+    {
+        this.id = id;
+        this.name = name;
+        this.sex = sex;
+        this.salary = salary;
     }
-    public void setSex(String sex) {
-        this.sex=sex;
+    
+    public void setID(String id)
+    {
+        this.id = id;                 //Polymorphism
     }
-    public void setSalary(int salary) {
-        this.salary=salary;
+    
+    public void setName(String name)
+    {
+        this.name = name;
     }
-    public String getId() {
+    
+    public void setSex(String sex)
+    {
+        this.sex = sex;
+    }
+    
+    public void setSalary(int salary)
+    {
+        this.salary = salary;
+    }
+    
+    public String getID()
+    {
         return id;
     }
-    public String getName(){
+    
+    public String getName()
+    {
         return name;
     }
-    public String getSex(){
+    
+    public String getSex()
+    {
         return sex;
     }
-    public int getSalary(){
+    
+    public int getSalary()
+    {
         return salary;
     }
-
-    void print() {
-        System.out.println(getId()+", "+getName()+", "+getSex()+", "+getSalary());
+    
+    public void print()
+    {
+        System.out.println( id + " " + name + " " + sex + " " + salary);
     }
 }
