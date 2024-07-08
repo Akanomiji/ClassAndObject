@@ -24,10 +24,10 @@ public class EmployeeTest {
 //        employee.name=scan.next();
 //        employee.sex=scan.next();
 //        employee.salary=scan.nextInt();
-        employee.setId(scan.next());
-        employee.setName(scan.next());
-        employee.setSex(scan.next());
-        employee.setSalary(scan.nextInt());
-        return employee;
+//        employee.setId(scan.next());
+//        employee.setName(scan.next());
+//        employee.setSex(scan.next());
+//        employee.setSalary(scan.nextInt());
+//        return employee;
     }
 }
