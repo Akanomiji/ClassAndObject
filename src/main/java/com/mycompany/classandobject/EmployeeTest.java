@@ -15,6 +15,10 @@ public class EmployeeTest {
 //        System.out.println(emp.getId()+", "+emp.getName()+", "+emp.getSex()+", "+emp.getSalary());
           Employee[] emp = new Employee[5];
           emp[0] = new Employee("0001","Mon","F",20000);
+          emp[1] = new Employee("0002","Dom","M",402336);
+          emp[2] = new Employee("0003","Fon","F",15000);
+          emp[3] = new Employee("0004","Ton","M",5000);
+          emp[4] = new Employee("0005","Zon","M",1000);
           for(int i = 0;i < emp.length;i++)
         {
             emp[i].print();
