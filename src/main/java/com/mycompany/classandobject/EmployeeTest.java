@@ -36,7 +36,7 @@ public class EmployeeTest {
         for (int i = 0; i < emp.length; i++) {
             sTotal = sTotal + emp[i].getRaiseSalary();
         }
-        System.out.print("Total            "+sTotal);
+        System.out.print("Total           "+sTotal);
 
     }
 
