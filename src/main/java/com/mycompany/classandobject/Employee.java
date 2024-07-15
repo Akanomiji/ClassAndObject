@@ -49,6 +49,14 @@ public class Employee {
         this.salary = salary;
     }
     
+    public void raiseSalary(int raiseSalary)
+    {
+        this.raiseSalary = raiseSalary;
+    }
+    public void totalSalary(int totalSalary)
+    {
+        this.totalSalary = totalSalary;
+    }
     public String getID()
     {
         return id;
@@ -69,6 +77,11 @@ public class Employee {
         return salary;
     }
     
+   public int getRaiseSalary(){
+        
+        return salary + (salary * raiseSalary/100);
+    }
+    
     public void print()
     {
         System.out.print( id + "\t" + name + "\t" + sex + "\t" + salary );
@@ -80,9 +93,10 @@ public class Employee {
         System.out.println( id + "\t" + name + "\t" + sex + "\t" + (salary + (salary * raiseSalary/100))+"\t");
     }
     
+     
     
-    public void getTotalSalary(int totalSalary){
-        this.totalSalary = totalSalary;
+    public void getTotalSalary(){
+        
         System.out.println("TotalSalary"+ (salary+totalSalary));
     }
 }
