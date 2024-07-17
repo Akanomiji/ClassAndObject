@@ -4,17 +4,38 @@
  */
 package com.mycompany.classandobject;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import javax.swing.JFrame;
+
 /**
  *
  * @author com4936
  */
-public class BarGp extends javax.swing.JFrame {
+public class BarGp extends JFrame {
 
     /**
      * Creates new form BarGp
      */
     public BarGp() {
         initComponents();
+        setSize(1000, 600);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        super.setSize(1000, 600);
+        
+        g.setColor(Color.black);
+        g.drawLine(130, 550, 1000, 550);
+        g.drawLine(130, 450, 1000, 450);
+        g.drawLine(130, 350, 1000, 350);
+        g.drawLine(130, 250, 1000, 250);
+        g.drawLine(130, 150, 1000, 150);
+        g.setColor(Color.red);
+        
+        g.fillRect(130, 450 + 30, 50, 70);
+        g.fillRect(190, 450 - 50, 50, 150);
     }
 
     /**

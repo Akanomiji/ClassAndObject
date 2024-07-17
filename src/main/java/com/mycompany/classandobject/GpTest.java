@@ -7,12 +7,12 @@ package com.mycompany.classandobject;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-
+import javax.swing.JFrame;
 /**
  *
  * @author com4936
  */
-public class GpTest extends javax.swing.JFrame {
+public class GpTest extends JFrame {
 
     /**
      * Creates new form GpTest
