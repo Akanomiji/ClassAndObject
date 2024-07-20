@@ -5,73 +5,92 @@
 package com.mycompany.classandobject;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JFrame;
 
 /**
  *
- * @author com4936
+ * @author Agent
  */
-public class BarGp extends JFrame {
+public class DrawGp extends JFrame {
 
     /**
-     * Creates new form BarGp
+     * Creates new form DrawGp
      */
-    public BarGp() {
+    public DrawGp() {
         initComponents();
-        setSize(1000, 700);
+        setSize(700, 700);
     }
-
+    
     @Override
-    public void paint(Graphics g) {
-        super.setSize(1000, 700);
+    public void paint(Graphics g){
+        super.setSize(700, 700);
         
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, getWidth(), getHeight());
         
-        g.setColor(Color.black);
-        g.drawLine(260, 650, 1000, 650);
-        g.drawLine(260, 550, 1000, 550);
-        g.drawLine(260, 450, 1000, 450);
-        g.drawLine(260, 350, 1000, 350);
-        g.drawLine(260, 250, 1000, 250);
-        g.drawLine(260, 150, 1000, 150);
         
-        g.setColor(Color.decode("#EB984E"));
-        g.fillRect(300, 550 - 175, 50, 275);
-        g.setColor(Color.decode("#F4D03F"));
-        g.fillRect(400, 550 - 200, 50, 300);
-        g.setColor(Color.decode("#A569BD"));
-        g.fillRect(500, 550 - 275, 50, 375);
-        g.setColor(Color.decode("#2980B9"));
-        g.fillRect(600, 550 - 300, 50, 400);
-        g.setColor(Color.decode("#5BFF6D"));
-        g.fillRect(700, 550 - 375, 50, 475);
+        //head
         g.setColor(Color.red);
-        g.fillRect(800, 550 - 150, 50, 250);
+        g.fillRoundRect(300, 100, 120, 120, 30, 30);
         
         
+        
+        g.setColor(Color.decode("#7BF3FF"));
+        g.fillRect(350, 110, 20, 20);
+        
+        //mask
+        g.setColor(Color.decode("#FFD700"));
+        g.fillRect(310, 120, 100, 80);
+        //eye
+        g.setColor(Color.WHITE);
+        g.fillOval(325, 130, 20, 15);
+        g.fillOval(375, 130, 20, 15);
+        g.setColor(Color.blue);
+        g.fillOval(332, 135, 8, 8);
+        g.fillOval(382, 135, 8, 8);
+        //mouth
         g.setColor(Color.BLACK);
-        Font font = new Font("Monospaced", Font.BOLD, 24);
-        g.setFont(font);
-        g.drawString("0", 240, 660);
-        g.drawString("2,000,000", 130, 560);
-        g.drawString("4,000,000", 130, 460);
-        g.drawString("6,000,000", 130, 360);
-        g.drawString("8,000,000", 130, 260);
-        g.drawString("10,000,000", 115, 160);
+        g.drawLine(330, 180, 390, 180);
+        //body
+        g.setColor(Color.red);
+        g.fill3DRect(300, 230, 120, 150, true);
+        //neck
+        g.setColor(Color.red);
+        g.fill3DRect(320, 220, 80, 10, false);
         
+        //arms
+        g.setColor(Color.RED);
+        g.fillRect(260, 230, 40, 100);
+        g.fillRect(420, 230, 40, 100);
+        g.setColor(Color.decode("#FFD700")); 
+        g.fillRect(270, 230, 20, 60);
+        g.fillRect(430, 230, 20, 60);
+        
+        //legs
+        g.setColor(Color.RED);
+        g.fillRect(300, 380, 40, 100);
+        g.fillRect(380, 380, 40, 100);
+        g.setColor(Color.decode("#FFD700")); 
+        g.fillRect(310, 380, 20, 60);
+        g.fillRect(390, 380, 20, 60);
+        
+        //outline
         g.setColor(Color.BLACK);
-        g.setFont(new Font("Monospaced", Font.BOLD, 24));
-        g.drawString("2561", 300, 670);
-        g.drawString("2562", 400, 670);
-        g.drawString("2563", 500, 670);
-        g.drawString("2564", 600, 670);
-        g.drawString("2565", 700, 670);
-        g.drawString("2566", 800, 670);
+        g.drawRect(260, 230, 40, 100);
+        g.drawRoundRect(300, 100, 120, 120, 30, 30);
+        g.draw3DRect(320, 220, 80, 10, false);
+        g.draw3DRect(300, 230, 120, 150, true);
+        g.drawArc(340, 280, 50, 50, 180, 180);
+        
+        //body power cell
+        int[] xPoints = {330, 355, 380};
+        int[] yPoints = {260, 240, 260};
+        g.setColor(Color.decode("#28EBFF"));
+        g.drawPolyline(xPoints, yPoints, 3);
+        g.drawPolygon(xPoints, yPoints, 3);
+        g.fillArc(340, 280, 50, 50, 180, 180);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -114,20 +133,20 @@ public class BarGp extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BarGp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DrawGp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BarGp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DrawGp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BarGp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DrawGp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BarGp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DrawGp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BarGp().setVisible(true);
+                new DrawGp().setVisible(true);
             }
         });
     }
