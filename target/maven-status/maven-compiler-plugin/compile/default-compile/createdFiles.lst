@@ -11,6 +11,8 @@ com\mycompany\classandobject\GpTest.class
 com\mycompany\classandobject\ClassAndObject.class
 com\mycompany\classandobject\ShowImage$1.class
 com\mycompany\classandobject\ImageSize$1.class
+com\mycompany\classandobject\AutoMovePic$1.class
+com\mycompany\classandobject\AutoMovePic.class
 com\mycompany\classandobject\ShowPicture.class
 com\mycompany\classandobject\BarGp.class
 com\mycompany\classandobject\ImageSize.class

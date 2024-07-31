@@ -10,58 +10,66 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
-
 
 /**
  *
  * @author com4936
  */
-public class SlideAutoPic extends JFrame implements Runnable{
-
-    Image[] image = new Image[5];
-    int n,i = 0;
-    int pSize = 200;
+public class AutoMovePic extends javax.swing.JFrame implements Runnable{
     
+    
+    Image image;
+    int bSize = 50, y,x=0;
     /**
-     * Creates new form SlideAutoPic
+     * Creates new form AutoMovePic
      */
-    public SlideAutoPic() {
+    public AutoMovePic() {
         initComponents();
+        image = Toolkit.getDefaultToolkit().createImage("D:\\pic\\1.jpg");
         setSize(600, 600);
-        image[0] = Toolkit.getDefaultToolkit().createImage("D:\\pic\\1.jpg");
-        image[1] = Toolkit.getDefaultToolkit().createImage("D:\\pic\\2.jpg");
-        image[2] = Toolkit.getDefaultToolkit().createImage("D:\\pic\\3.jpg");
-        image[3] = Toolkit.getDefaultToolkit().createImage("D:\\pic\\4.jpg");
-        image[4] = Toolkit.getDefaultToolkit().createImage("D:\\pic\\5.jpg");
-        
     }
-
-    @Override
+    
     public void paint(Graphics g) {
         super.setSize(600, 600);
+ 
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, getWidth(), getHeight());
-        int x = (getWidth() - pSize) / 2;
-        int y = (getHeight() - pSize) / 2;
-
-        g.drawImage(image[n], x, y, pSize, pSize, this);
+        
+        g.drawImage(image, 5, 30,bSize,bSize, this);
         new Thread(this).start();
     }
     
-    @Override
+    
+    
     public void run() {
         while(true){
             try {
-                Thread.sleep(2000);
+                Thread.sleep(500);
             } catch (InterruptedException ex) {
                 Logger.getLogger(SlideAutoPic.class.getName()).log(Level.SEVERE, null, ex);
             }
-            n=(n+1) % image.length;
+            
+            
+            
+            /*
+            if(x<550){
+               x=x+5;
+            }
+            */
+            /*
+            if(y<550){
+                y=y+5;
+            }
+            */
+            /*
+            if(x<550||y<550){
+                x=x+5;
+                y=y+5;
+            }
+            */
             repaint();
         }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,28 +112,23 @@ public class SlideAutoPic extends JFrame implements Runnable{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SlideAutoPic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AutoMovePic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SlideAutoPic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AutoMovePic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SlideAutoPic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AutoMovePic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SlideAutoPic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AutoMovePic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
             public void run() {
-                new SlideAutoPic().setVisible(true);
+                new AutoMovePic().setVisible(true);
             }
         });
     }
-
-    
-
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
