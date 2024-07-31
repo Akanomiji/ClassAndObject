@@ -21,7 +21,7 @@ public class ShowImage extends JFrame {
     public ShowImage() {
         initComponents();
         
-        image = Toolkit.getDefaultToolkit().createImage("C:\\Users\\Agent\\Downloads\\images.jpg");
+        image = Toolkit.getDefaultToolkit().createImage("D:\\images.png");
         setSize(200, 200);
     }
     Image image;
@@ -30,7 +30,8 @@ public class ShowImage extends JFrame {
         super.setSize(200, 200);
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, getWidth(), getHeight());
-        g.drawImage(image, 5, 30, this);
+//        g.drawImage(image, 5, 30, this);
+        g.drawImage(image, 5, 30,100,100, this);
     }
 
     /**
