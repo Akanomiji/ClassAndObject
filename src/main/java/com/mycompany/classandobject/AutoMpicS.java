@@ -13,93 +13,109 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author com4936
+ * @author Agent
  */
-public class AutoMovePic extends javax.swing.JFrame implements Runnable {
-
+public class AutoMpicS extends javax.swing.JFrame implements Runnable {
+    
+    
     Image image;
     int bSize = 50;
-    int y = 20;
-    int x = 0;
-    int n = 1;
-    
-    
-
+    int x;
+    int y;
+    int direction = 0;
+    int step = 10;
+    int size;
+    int centerX;
+    int centerY;
+    int offset;
+    boolean movingToCenter = false;
     /**
-     * Creates new form AutoMovePic
+     * Creates new form AutoMpicS
      */
-    public AutoMovePic() {
+    public AutoMpicS() {
         initComponents();
-        image = Toolkit.getDefaultToolkit().createImage("C:\\Users\\Agent\\Downloads\\pic1.jpg");
         super.setSize(600, 600);
-
-        
+        image = Toolkit.getDefaultToolkit().createImage("C:\\Users\\Agent\\Downloads\\pic1.jpg");
+        centerX = (super.getWidth() - bSize) / 2;
+        centerY = (super.getHeight() - bSize) / 2;
+        size = Math.min(super.getWidth(), super.getHeight()) / 2 - bSize; 
+        offset = 0;
+        x = centerX - size;
+        y = centerY - size;
         
         new Thread(this).start();
     }
-
+    
     public void paint(Graphics g) {
-
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, super.getWidth(), super.getHeight());
         g.drawImage(image, x, y, bSize, bSize, this);
     }
-
+    
+    @Override
     public void run() {
-        while (true) {
+        while (size > 0) {
             try {
                 Thread.sleep(50);
             } catch (InterruptedException ex) {
-                Logger.getLogger(SlideAutoPic.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AutoMovePic.class.getName()).log(Level.SEVERE, null, ex);
             }
-            switch (n) {
-                case 1:
-                    if (x <= 550) {
-                        x = x + 10;
-                        repaint();
-                    }
-                    if (x >= 550) {
-                        n = 2;
-                    }
-                    ;
-                    break;
-                case 2:
-                    if (y <= 550) {
-                        y = y + 10;
-                        repaint();
-                    }
-                    if (y >= 550) {
-                        n = 3;
-                    }
-                    ;
-                    break;
-                case 3:
-                    if (x >= 0) {
-                        x = x - 10;
-                        repaint();
-                    }
-                    if (x <= 0) {
-                        n = 4;
-                    }
-                    ;
-                    break;
-                case 4:
-                    if (y >= 30) {
-                        y = y - 10;
-                        repaint();
-                        
-                    }
-                    if (y <= 30) {
-                        n = 1;
-
-                    }
-                    ;
-                    break;
+            
+            if (movingToCenter) {
+                moveToCenter();
+            } else {
+                moveInSpiral();
             }
-
+            
+            repaint();
         }
     }
+    
+    private void moveInSpiral() {
+        switch (direction) {
+            case 0: 
+                x += step;
+                if (x >= centerX + size - offset) direction = 1;
+                break;
+            case 1: 
+                y += step;
+                if (y >= centerY + size - offset) direction = 2;
+                break;
+            case 2: 
+                x -= step;
+                if (x <= centerX - size + offset) direction = 3;
+                break;
+            case 3:
+                y -= step;
+                if (y <= centerY - size + offset) {
+                    direction = 0;
+                    size -= 2 * step;
+                    offset += step; 
+                    if (size < 0) {
+                        movingToCenter = true;
+                    }
+                }
+                break;
+        }
+    }
+    
+    private void moveToCenter() {
+        
+        if (x < centerX) x += step;
+        if (x > centerX) x -= step;
+        if (y < centerY) y += step;
+        if (y > centerY) y -= step;
 
+        if (x == centerX && y == centerY) {
+            
+            size = Math.min(super.getWidth(), super.getHeight()) / 2 - bSize;
+            offset = 0;
+            direction = 0;
+            movingToCenter = false;
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -142,23 +158,25 @@ public class AutoMovePic extends javax.swing.JFrame implements Runnable {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AutoMovePic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AutoMpicS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AutoMovePic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AutoMpicS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AutoMovePic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AutoMpicS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AutoMovePic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AutoMpicS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AutoMovePic().setVisible(true);
+                new AutoMpicS().setVisible(true);
             }
         });
     }
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
